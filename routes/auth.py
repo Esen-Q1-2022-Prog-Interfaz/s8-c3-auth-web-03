@@ -27,7 +27,7 @@ def login():
             print(bcrypt.check_password_hash(currentUser.password, password))
             if bcrypt.check_password_hash(currentUser.password, password):
                 login_user(currentUser)
-                return redirect(url_for("auth.dashboard"))
+                return redirect(url_for("todolist.home"))
     return render_template("login.html", form=form)
 
 
@@ -38,7 +38,7 @@ def register():
         username = form.username.data
         password = form.password.data
         hashed_password = bcrypt.generate_password_hash(password)
-        newUser = User(username, hashed_password, "active", "captain")
+        newUser = User(username, hashed_password, "active", "user")
         db.session.add(newUser)
         db.session.commit()
         return redirect(url_for("auth.login"))
