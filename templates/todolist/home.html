@@ -11,7 +11,7 @@
 <p>this is my awesome todolist home</p>
 
 {% for userItem in userList %}
-<a href="#">{{ userItem.username }}</a><br>
+<a href="{{ url_for('todolist.tasklist', userId=userItem.id) }}">{{ userItem.username }}</a><br>
 {% endfor %}
 
 {% endblock %}
