@@ -5,6 +5,13 @@
 <br>
 {% if user %}
 <p>Hello, {{user.username}} rank: {{user.rank}}</p>
+<br>
+<a href="{{ url_for('auth.logout') }}">logout</a>
 {% endif %}
 <p>this is my awesome todolist home</p>
+
+{% for userItem in userList %}
+<a href="#">{{ userItem.username }}</a><br>
+{% endfor %}
+
 {% endblock %}

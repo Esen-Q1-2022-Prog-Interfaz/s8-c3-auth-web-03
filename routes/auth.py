@@ -20,11 +20,8 @@ def login():
     if form.validate_on_submit():
         username = form.username.data
         password = form.password.data
-        print(username, password)
         currentUser = User.query.filter_by(username=username).first()
-        print(currentUser)
         if currentUser:
-            print(bcrypt.check_password_hash(currentUser.password, password))
             if bcrypt.check_password_hash(currentUser.password, password):
                 login_user(currentUser)
                 return redirect(url_for("todolist.home"))
